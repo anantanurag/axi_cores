@@ -29,9 +29,10 @@ module saxil_read_top_testbench (
 	);
 
 	initial begin
-		$monitor("tb_saxil_read_top_clk = %h ; tb_saxil_read_top_clk = %h ; tb_saxil_read_arvalid = %h; tb_saxil_read_arready = %h; tb_saxil_read_araddr = %h; tb_saxil_read_arprot = %h; tb_saxil_read_rvalid = %h; tb_saxil_read_rready = %h; tb_saxil_read_rdata = %h; tb_saxil_read_rresp = %h;",
+		$monitor("TIME = %3d; tb_saxil_read_top_clk = %h ; tb_saxil_read_top_rst_n = %h ; tb_saxil_read_arvalid = %h; tb_saxil_read_arready = %h; tb_saxil_read_araddr = %h; tb_saxil_read_arprot = %h; tb_saxil_read_rvalid = %h; tb_saxil_read_rready = %h; tb_saxil_read_rdata = %h; tb_saxil_read_rresp = %h;",
+			$time,
 			tb_saxil_read_top_clk,
-			tb_saxil_read_top_clk,
+			tb_saxil_read_top_rst_n,
 			tb_saxil_read_arvalid,
 			tb_saxil_read_arready,
 			tb_saxil_read_araddr,
@@ -59,7 +60,7 @@ module saxil_read_top_testbench (
 	initial begin
 		//1st TX
 		tb_saxil_read_arvalid = 1'b1;
-		tb_saxil_read_araddr = $random;
+		tb_saxil_read_araddr = 32'hFFFF_FFFF;
 		tb_saxil_read_arprot = 3'h0;
 		tb_saxil_read_rready = 1'b1;
 
@@ -70,7 +71,7 @@ module saxil_read_top_testbench (
 		#30;
 		//2nd TX
 		tb_saxil_read_arvalid = 1'b1;
-		tb_saxil_read_araddr = $random;
+		tb_saxil_read_araddr = 32'hF0F0_F0F0;
 		tb_saxil_read_arprot = 3'h0;
 		tb_saxil_read_rready = 1'b1;
 
@@ -79,6 +80,7 @@ module saxil_read_top_testbench (
 		tb_saxil_read_rready = 1'b0;
 
 		#30;
+/*
 		//3rd TX
 		tb_saxil_read_arvalid = $random;
 		tb_saxil_read_araddr = $random;
@@ -106,6 +108,7 @@ module saxil_read_top_testbench (
 		tb_saxil_read_araddr = $random;
 		tb_saxil_read_arprot = $random;
 		tb_saxil_read_rready = $random;
+		*/
 
 		$finish;
 

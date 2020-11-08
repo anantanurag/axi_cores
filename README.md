@@ -50,3 +50,5 @@ I forgot to add $finish.
 
 VVP is simulating nicely now, but rdata is 0 throughout. Now I need to start debugging.
 
+Apart from a small error where I was resetting on negative level, any other issue seems hard to debug without a waveform viewer.
+

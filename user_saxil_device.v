@@ -9,7 +9,7 @@ module user_saxil_device (
 	input wire [31:0] user_port_araddr
 );
 
-	always @(user_saxil_rst_n) begin
+	always @(~user_saxil_rst_n) begin
 		user_port_arready <= 1'b0;
 		user_port_rvalid <= 1'b0;
 		user_port_rdata <= 1'b0;
