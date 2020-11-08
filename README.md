@@ -32,3 +32,11 @@ Now I need to write a top module to connect SAXIL and SAXIL_DEVICE.
 
 The top module connecting SAXIL and Slave Read Device is compile error free.
 
+Now I need to write a test bench for saxil_read_top.v
+
+I forgot to add logic for ARPROT, but is it the slave's responsibility to deal with security? I think some other mediator is required to handle PROT signals. I am just going to leave PROT alone for now.
+
+Written a testbench for the saxil_read_top module.
+
+The test bench has compiled but on running vvp, the terminal simply hanged without giving any response. Even Ctrl-C did not work, I had to kill the terminal.
+

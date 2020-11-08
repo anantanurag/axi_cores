@@ -1,6 +1,6 @@
 module saxil_read_top (
-	input wire saxil_read_top_clk,    // Clock
-	input wire saxil_read_top_rst_n,  // Asynchronous reset active low
+	input wire saxil_read_top_clk,
+	input wire saxil_read_top_rst_n,
 	input wire saxil_read_arvalid,
 	output wire saxil_read_arready,
 	input wire [31:0] saxil_read_araddr,
