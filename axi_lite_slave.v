@@ -107,6 +107,10 @@ module axi_lite_slave_read (
 		S_AXIL_RVALID = 1'b0;
 		S_AXIL_RDATA = 32'b0;
 		S_AXIL_RRESP = 2'b0;
+
+		// FSM States Initialized
+		fsm_saxil_current_state = 4'b0;
+		fsm_saxil_next_state = 4'b0;
 	end
 
 
@@ -119,7 +123,6 @@ module axi_lite_slave_read (
 		S_AXIL_RRESP = 2'b0;
 	end
 
-
 	// Actual Logic starts here 
 	/** Finite State Machine
 	States - 
@@ -131,6 +134,7 @@ module axi_lite_slave_read (
 		5. FSM_SAXIL_RD_SEND_DATA_TO_BUS - rvalid is 1
 
 **/
+
 always @ (posedge(S_AXIL_ACLK) && S_AXIL_ARESETn) begin
 	case (fsm_saxil_current_state)
 		FSM_SAXIL_RD_WAIT_FOR_ARVALID_ASSERTION : 

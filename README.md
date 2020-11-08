@@ -52,3 +52,11 @@ VVP is simulating nicely now, but rdata is 0 throughout. Now I need to start deb
 
 Apart from a small error where I was resetting on negative level, any other issue seems hard to debug without a waveform viewer.
 
+In Waveform viewer, it is obvious that device is generating data but the AXIL Slave is not zeroing it somehow. Current state of the FSM is in unknown state. I should initialize it.
+
+So FSM is moving like this - 0 -> 1 -> 0, why?
+
+ARREADY, RVALID, RDATA - all outputs of device are always 0. I think I forgot to connect ARREADY and RVALID between SAXIL and Device. Something fishy going on here. I am connecting RDATA between SAXIL and Device inside SAXIL Module but leaving ARREADY and RVALID to be connected by a wrapper module. I forgot that connecting wires between Device and SAXIL and assigning values to output ports of SAXIL are 2 different things.
+
+Trying to understand how to connect the signals between SAXIL and Device, either Synchronously or Asynchronously. I would like it to be synchronous but how to do it?
+
