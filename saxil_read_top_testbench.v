@@ -69,18 +69,18 @@ module saxil_read_top_testbench (
 		tb_saxil_read_arprot = 3'h0;
 		tb_saxil_read_rready = 1'b1;
 
-		#30;
+		#50;
 		tb_saxil_read_arvalid = 1'b0;
 		tb_saxil_read_rready = 1'b0;
 
-		#30;
+		#100;
 		//2nd TX
 		tb_saxil_read_arvalid = 1'b1;
 		tb_saxil_read_araddr = 32'hF0F0_F0F0;
 		tb_saxil_read_arprot = 3'h0;
 		tb_saxil_read_rready = 1'b1;
 
-		#30;
+		#50;
 		tb_saxil_read_arvalid = 1'b0;
 		tb_saxil_read_rready = 1'b0;
 

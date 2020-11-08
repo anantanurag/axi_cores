@@ -60,3 +60,11 @@ ARREADY, RVALID, RDATA - all outputs of device are always 0. I think I forgot to
 
 Trying to understand how to connect the signals between SAXIL and Device, either Synchronously or Asynchronously. I would like it to be synchronous but how to do it?
 
+I think that all signals coming in and out of the device should be connected synchronously without any additional logic. Currently some additional logic has been applied to RDATA, maybe I will try to simplify it later.
+
+RVALID and ARREADY are crossing the device boundary onto the SAXIL, but FSM is not proceeding as expected. I think I forgot to add the code to assign current_state <= next_state. I should have revised the tutorial instead of guessing.
+
+It should be simple to debug. Let me take a look at this again tomorrow, or whenever I feel like debugging this.
+
+
+

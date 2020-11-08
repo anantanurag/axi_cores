@@ -121,6 +121,18 @@ module axi_lite_slave_read (
 		S_AXIL_RVALID = 1'b0;
 		S_AXIL_RDATA = 32'b0;
 		S_AXIL_RRESP = 2'b0;
+
+		// FSM States Initialized
+		fsm_saxil_current_state = 4'b0;
+		fsm_saxil_next_state = 4'b0;
+	end
+	always @ /*(*)*/(posedge(S_AXIL_ACLK) && S_AXIL_ARESETn) begin
+		S_AXIL_ARREADY <= user_port_arready;
+		user_port_arvalid <= S_AXIL_ARVALID;
+		S_AXIL_RVALID <= user_port_rvalid;
+		//S_AXIL_RDATA <= user_port_rdata;
+		S_AXIL_RRESP <= user_port_rresp;
+		user_port_araddr <= S_AXIL_ARADDR;
 	end
 
 	// Actual Logic starts here 
@@ -199,6 +211,10 @@ always @(*) begin
 		default : /* DO NOTHING */;
 	endcase
 
+end
+
+always @ (posedge(S_AXIL_ACLK) && S_AXIL_ARESETn) begin
+	fsm_saxil_current_state <= fsm_saxil_next_state;
 end
 
 
