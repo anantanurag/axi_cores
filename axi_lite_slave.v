@@ -57,9 +57,9 @@ module axi_lite_slave_read (
 	input wire user_port_arready,
 	output reg user_port_arvalid,
 	input wire user_port_rvalid,
-	input wire user_port_rdata,
-	input wire user_port_rresp,
-	output reg user_port_araddr
+	input wire [31:0] user_port_rdata,
+	input wire [1:0] user_port_rresp,
+	output reg [31:0] user_port_araddr
 	// User Port Signals End
 );
 

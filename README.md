@@ -27,3 +27,8 @@ Next issue is packed vs unpacked arrays, iverilog says that if I want to use unp
 After resolving the errors related to vectored vs scaler, duplicate declaration inside module and outside, now one last piece of silly error, I need to give each FSM state a valid binary value. After one single Google search, I found that I require to use localparam. And then my file is compilation error free.
 
 I wrote a basic user_saxil_device.v file for implementing the device module on top of which the axi slave reader sits. Nothing complex so far, just returns a random rdata value for any address. Obviously I will either need to modify this file for slave writer or create a new device solely for write.
+
+Now I need to write a top module to connect SAXIL and SAXIL_DEVICE.
+
+The top module connecting SAXIL and Slave Read Device is compile error free.
+
