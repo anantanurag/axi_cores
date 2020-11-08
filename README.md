@@ -40,3 +40,13 @@ Written a testbench for the saxil_read_top module.
 
 The test bench has compiled but on running vvp, the terminal simply hanged without giving any response. Even Ctrl-C did not work, I had to kill the terminal.
 
+Maybe because I forgot to add the monitor signals, there wasn't any response.
+
+Yes, the issue was definitely the missing monitor signal. I just need to remove $time from the monitor statement and prints should be controlled unlike with $time.
+
+Still non-terminating simulation. I think I need to add timescale.
+
+I forgot to add $finish.
+
+VVP is simulating nicely now, but rdata is 0 throughout. Now I need to start debugging.
+
