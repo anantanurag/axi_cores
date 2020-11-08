@@ -3,6 +3,7 @@ My implementation of AXI and AXI-lite Cores
 
 
 8 November 2020
+
 ZipCPU makes some great points on using formal verfication such and eventually going on to write an efficient AXI Core. AXI is challenging, so I will start with AXI-lite. I will start with a slave AXI-lite module. I still need to read the specifications. I am not sure how this project will turn out. If I cling on to ZIPCPU's blog articles, I should sufficiently help me walk down this path for AXI-lite atleast. Once I have a decent AXI-lite core, I shall attempt the AXI core.
 
 I realized that just as master and slave cores can be split into separate modules, even read and write can be split. That makes the first task of writing a SLAVE READ module a much less daunting task.
@@ -24,3 +25,5 @@ Tried compiling the design, the first set of errors clarified the reg vs wire pr
 Next issue is packed vs unpacked arrays, iverilog says that if I want to use unpacked arrays, I should switch to SystemVerilog
 
 After resolving the errors related to vectored vs scaler, duplicate declaration inside module and outside, now one last piece of silly error, I need to give each FSM state a valid binary value. After one single Google search, I found that I require to use localparam. And then my file is compilation error free.
+
+I wrote a basic user_saxil_device.v file for implementing the device module on top of which the axi slave reader sits. Nothing complex so far, just returns a random rdata value for any address. Obviously I will either need to modify this file for slave writer or create a new device solely for write.
