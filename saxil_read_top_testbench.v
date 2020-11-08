@@ -29,6 +29,11 @@ module saxil_read_top_testbench (
 	);
 
 	initial begin
+    	$dumpfile("saxil_read_top_testbench.vcd");
+    	$dumpvars();
+ 	end
+
+	initial begin
 		$monitor("TIME = %3d; tb_saxil_read_top_clk = %h ; tb_saxil_read_top_rst_n = %h ; tb_saxil_read_arvalid = %h; tb_saxil_read_arready = %h; tb_saxil_read_araddr = %h; tb_saxil_read_arprot = %h; tb_saxil_read_rvalid = %h; tb_saxil_read_rready = %h; tb_saxil_read_rdata = %h; tb_saxil_read_rresp = %h;",
 			$time,
 			tb_saxil_read_top_clk,
