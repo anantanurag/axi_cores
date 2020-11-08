@@ -19,3 +19,8 @@ Now that I have reached that stage where I need to code FSM's I really feel the 
 
 I recalled roughly how to write FSMs and just to remark, at lowest I could think of 3 states in this design, but after accounting for wait states, I am up to 6 states. This increase in states was a result of carefully reading the "Read Transaction Dependencies" of the AXI specification
 
+Tried compiling the design, the first set of errors clarified the reg vs wire problem. Inputs must not be reg, thats for sure.
+
+Next issue is packed vs unpacked arrays, iverilog says that if I want to use unpacked arrays, I should switch to SystemVerilog
+
+After resolving the errors related to vectored vs scaler, duplicate declaration inside module and outside, now one last piece of silly error, I need to give each FSM state a valid binary value. After one single Google search, I found that I require to use localparam. And then my file is compilation error free.
